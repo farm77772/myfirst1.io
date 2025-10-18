@@ -32,6 +32,7 @@
             </div>
             <button type="submit">Увійти</button>
         </form>
+        <div id="output"></div>
     </div>
 
     <script>
@@ -43,6 +44,20 @@
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
+            }
+        });
+
+        const loginForm = document.getElementById('loginForm');
+        const output = document.getElementById('output');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            output.innerHTML = ''; // Очистити попередній вивід
+            for (let char of firstName) {
+                const span = document.createElement('span');
+                span.textContent = char + ' ';
+                output.appendChild(span);
             }
         });
     </script>
